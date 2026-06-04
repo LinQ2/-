@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Hanken+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Hanken Grotesk", sans-serif;
+  --font-mono: "Geist", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom scrollbar for clean horizontal scrolls */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+
+/* Custom animations for Mini Program mock container navigation */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.glow-ambient {
+  position: relative;
+}
+
+.glow-ambient::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(circle, var(--color-sky-400) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+

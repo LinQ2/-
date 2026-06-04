@@ -1,0 +1,6 @@
+{
+  "name": "达人情报局",
+  "description": "微信小程序多平台（抖音、小红书）网络达人真实数据分析与智能AI辅助工具，提供热门趋势、数据分析、AI剧本生成与爆火标题预测等功能。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
