@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "AI爆款测试室",
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  }
+}

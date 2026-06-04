@@ -1,0 +1,159 @@
+/* pages/discover/discover.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f9fc;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.search-section {
+  padding: 16rpx 32rpx;
+  background-color: #f7f9fc;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  padding: 12rpx 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  margin-left: 12rpx;
+}
+
+.ai-btn {
+  background: linear-gradient(135deg, #1a237e, #0d47a1);
+  color: #ffffff;
+  font-size: 24rpx;
+  padding: 12rpx 24rpx;
+  border-radius: 16rpx;
+  line-height: 1.5;
+}
+
+.platform-tabs {
+  display: flex;
+  background-color: #eceef1;
+  border-radius: 20rpx;
+  padding: 6rpx;
+  margin-top: 16rpx;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  font-size: 26rpx;
+  padding: 12rpx 0;
+  color: #454652;
+  border-radius: 16rpx;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  background-color: #ffffff;
+  color: #1a237e;
+  font-weight: bold;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.08);
+}
+
+.spotlight-card {
+  margin: 24rpx 32rpx;
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(1, 18, 85, 0.08);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.header-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #191c1e;
+  margin-left: 8rpx;
+}
+
+.spotlight-content {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  border: 4rpx solid #bdc2ff;
+}
+
+.info {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.creator-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #191c1e;
+  display: block;
+}
+
+.creator-sub {
+  font-size: 24rpx;
+  color: #767683;
+}
+
+.growth-stats {
+  text-align: right;
+}
+
+.percentage {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #006876;
+  display: block;
+}
+
+.growth-label {
+  font-size: 20rpx;
+  color: #767683;
+}
+
+.badge {
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  background-color: #eceef1;
+  color: #454652;
+  margin-right: 12rpx;
+}
+
+.primary-badge {
+  background-color: #dee1ff;
+  color: #1a237e;
+}
+
+.region-heatmap {
+  margin: 24rpx 32rpx;
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(1, 18, 85, 0.08);
+}
+
+.map-visual {
+  height: 320rpx;
+  background-color: #f7f9fc;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

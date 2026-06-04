@@ -1,0 +1,107 @@
+<!-- pages/discover/discover.wxml -->
+<navigation-bar title="达人情报局" back="{{false}}" background="#f7f9fc"></navigation-bar>
+
+<scroll-view class="container" scroll-y="true" refresher-enabled="true" refresher-triggered="{{isRefreshing}}" bindrefresherrefresh="onPullDownRefresh">
+  <!-- 搜索与平台切换 -->
+  <view class="search-section">
+    <view class="search-bar">
+      <icon class="search-icon" type="search" size="18"></icon>
+      <input class="search-input" placeholder="搜索达人、领域或 AI 搜索" bindinput="onSearchInput" value="{{searchQuery}}" />
+      <button class="ai-btn" bindtap="triggerAISearch">
+        <text class="material-icon">✨</text> Mini AI
+      </button>
+    </view>
+
+    <!-- 平台切换器 -->
+    <view class="platform-tabs">
+      <view class="tab {{platform === 'Douyin' ? 'active' : ''}}" data-platform="Douyin" bindtap="switchPlatform">Douyin</view>
+      <view class="tab {{platform === 'Xiaohongshu' ? 'active' : ''}}" data-platform="Xiaohongshu" bindtap="switchPlatform">Xiaohongshu</view>
+    </view>
+  </view>
+
+  <!-- AI 潜力新星预测 -->
+  <view class="spotlight-card" bindtap="goToProfile" data-id="LunaTech">
+    <view class="card-header">
+      <text class="header-icon">🧭</text>
+      <text class="header-title">AI潜力新星预测</text>
+    </view>
+    <view class="spotlight-content">
+      <image class="avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzjeej0CI_4b9zsTHPubk043Lz0jcAxUtL0N5MOkcF03gvg7X9_6Gs81wVaqFf5l84l7qle3IjLbOC6QwnnUYQUweIUy-38hNkvWa00cfRenyr5K-V_XZYg10YbEA-OPja5rh1EOHoY1yA2DYzlu0EiSKTn4yyuhP2dyO-aaLopO11jgAg0Xb0OSNm6WSLWDcemAr_c1te_jwTMY-F63dLfcgI6CRqyJ3GVowe35JG65Vx0ohWBPtBc1tqRPmc-ZgtgVgIcfSBin4" mode="aspectFill"></image>
+      <view class="info">
+        <text class="creator-name">@LunaTech</text>
+        <text class="creator-sub">Tech & Gadgets · 数码科技</text>
+      </view>
+      <view class="growth-stats">
+        <text class="percentage">+84%</text>
+        <text class="growth-label">环比增长</text>
+      </view>
+    </view>
+    <view class="card-footer">
+      <text class="badge">高客互动</text>
+      <text class="badge primary-badge">上升赛道</text>
+    </view>
+  </view>
+
+  <!-- 地区热门达人分布热力图 -->
+  <view class="region-heatmap">
+    <view class="card-header">
+      <text class="header-icon">🗺️</text>
+      <text class="header-title">地域达人分布热力地图</text>
+    </view>
+    <view class="map-visual">
+      <!-- 渲染微信小程序底层热力地图拓扑图 -->
+      <canvas canvas-id="heatmapCanvas" style="width: 100%; height: 100%;" />
+    </view>
+  </view>
+
+  <!-- 热门领域 -->
+  <view class="category-card">
+    <view class="category-header">
+      <view class="flex-row">
+        <text class="header-icon">🔥</text>
+        <text class="header-title">热门领域</text>
+      </view>
+      <text class="more-link">查看全部</text>
+    </view>
+    
+    <view class="category-list">
+      <block wx:for="{{categories}}" wx:key="name">
+        <view class="category-item">
+          <view class="left-cell">
+            <text class="cate-icon">{{item.icon}}</text>
+            <text class="cate-name">{{item.name}}</text>
+          </view>
+          <text class="cate-heat">热度: {{item.heat}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 实时热度榜 -->
+  <view class="rank-section">
+    <view class="rank-header">
+      <view>
+        <text class="rank-title">实时热度榜</text>
+        <text class="rank-sub">达人实时增长势头监控</text>
+      </view>
+      <image class="filter-icon" src="/assets/tune.png"></image>
+    </view>
+
+    <view class="rank-list">
+      <block wx:for="{{rankList}}" wx:key="id">
+        <view class="rank-row" bindtap="goToProfile" data-item="{{item}}">
+          <text class="rank-no">{{index + 1}}</text>
+          <image class="rank-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <view class="rank-info">
+            <text class="rank-name">{{item.name}}</text>
+            <text class="rank-category">{{item.category}}</text>
+          </view>
+          <view class="rank-right">
+            <text class="rank-followers">{{item.followers}}</text>
+            <text class="rank-trend">📈 {{item.growth}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</scroll-view>

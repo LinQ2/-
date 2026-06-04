@@ -1,0 +1,42 @@
+<!-- pages/ailab/ailab.wxml -->
+<navigation-bar title="AI 实验室" back="{{false}}"></navigation-bar>
+
+<scroll-view class="container" scroll-y="true">
+  <!-- 标题预测卡片 -->
+  <view class="panel-card">
+    <view class="panel-header">
+      <text class="panel-icon">💡</text>
+      <text class="panel-title">爆款标题AI测试</text>
+    </view>
+    
+    <label class="input-label">拟写您的短视频标题:</label>
+    <textarea class="title-textarea" placeholder="例：3分钟学会自媒体运营，新手必看的避坑指南..." bindinput="onTitleInput" value="{{titleInput}}" />
+    
+    <button class="submit-btn" bindtap="predictTitle">一键测试爆款概率</button>
+  </view>
+
+  <!-- 结果输出 -->
+  <block wx:if="{{predictionResult}}">
+    <view class="panel-card result-card">
+      <view class="result-title">AI评分结果</view>
+      
+      <view class="score-display">
+        <text class="score-num">{{predictionResult.score}}</text>
+        <text class="score-unit">分</text>
+      </view>
+
+      <view class="result-row mt-2">
+        <text class="result-label">预计点击率范围:</text>
+        <text class="result-value">{{predictionResult.ctrRange}}</text>
+      </view>
+
+      <view class="suggestions-box mt-3">
+        <view class="box-title">优化建议:</view>
+        <view class="suggestion-item" wx:for="{{predictionResult.suggestions}}" wx:key="*this">
+          <text class="dot">•</text>
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>

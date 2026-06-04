@@ -1,0 +1,125 @@
+<!-- pages/profile/profile.wxml -->
+<navigation-bar title="达人详情" back="{{true}}"></navigation-bar>
+
+<scroll-view class="container" scroll-y="true">
+  <!-- 头部档案 -->
+  <view class="profile-header">
+    <view class="avatar-ring">
+      <image class="avatar" src="{{profile.avatar}}" mode="aspectFill"></image>
+    </view>
+    <text class="name">{{profile.name}}</text>
+    <text class="handle">{{profile.handle}} · {{profile.category}}</text>
+    
+    <view class="tags">
+      <text class="tag xhs">{{profile.platform}}</text>
+      <text class="tag dy">官方分析</text>
+    </view>
+
+    <!-- 关键数据 KPI -->
+    <view class="kpi-row">
+      <view class="kpi-item">
+        <text class="kpi-val">{{profile.followers}}</text>
+        <text class="kpi-label">粉丝数</text>
+      </view>
+      <view class="kpi-item">
+        <text class="kpi-val">{{profile.engagementRate}}</text>
+        <text class="kpi-label">互动率</text>
+      </view>
+      <view class="kpi-item">
+        <text class="kpi-val">{{profile.avgLikes}}</text>
+        <text class="kpi-label">平均点赞</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 品牌契合量化 & AI 潜力评估 (双卡片Grid) -->
+  <view class="grid-section">
+    <view class="fit-card">
+      <text class="card-title">品牌契合度</text>
+      <view class="score-container">
+        <text class="big-score">{{profile.brandFitScore}}</text>
+        <text class="score-sub">{{profile.brandMatchLevel}}</text>
+      </view>
+    </view>
+
+    <view class="potential-card">
+      <text class="card-title">AI潜力评估</text>
+      <view class="progress-list">
+        <view class="prog-item">
+          <text class="prog-label">爆火概率: {{profile.aiPotential.viralProbability}}</text>
+          <progress percent="{{profile.aiPotential.viralScore}}" stroke-width="4" activeColor="#1a237e" backgroundColor="#eceef1" />
+        </view>
+        <view class="prog-item">
+          <text class="prog-label">转化效率: {{profile.aiPotential.conversionRate}}</text>
+          <progress percent="{{profile.aiPotential.conversionScore}}" stroke-width="4" activeColor="#006876" backgroundColor="#eceef1" />
+        </view>
+        <view class="prog-item">
+          <text class="prog-label">忠诚度: 稳定</text>
+          <progress percent="75" stroke-width="4" activeColor="#b9c3ff" backgroundColor="#eceef1" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 流量趋势 -->
+  <view class="trend-section">
+    <view class="section-title-row">
+      <text class="section-title">流量趋势 (30天)</text>
+      <text class="section-sub">曝光量</text>
+    </view>
+    <!-- 模拟柱状图 -->
+    <view class="bar-chart">
+      <view class="bar-item" wx:for="{{profile.trafficTrend}}" wx:key="date" style="height: {{item.exposure}}%"></view>
+    </view>
+    <view class="chart-labels">
+      <text>10月1日</text>
+      <text>10月15日</text>
+      <text>10月30日</text>
+    </view>
+  </view>
+
+  <!-- 粉丝画像 -->
+  <view class="demographics-section">
+    <text class="section-title">粉丝画像</text>
+    <view class="demo-grid">
+      <!-- 性别分布 -->
+      <view class="gender-block">
+        <text class="sub-title">性别分布</text>
+        <view class="pie-sim">
+          <view class="color-dot xhs-color"></view>
+          <text>女性 {{profile.demographics.femalePercentage}}%</text>
+        </view>
+        <view class="pie-sim">
+          <view class="color-dot dy-color"></view>
+          <text>男性 {{profile.demographics.malePercentage}}%</text>
+        </view>
+      </view>
+
+      <!-- 年龄分布 -->
+      <view class="age-block">
+        <text class="sub-title">年龄分布</text>
+        <view class="age-row">
+          <text class="age-range">18-24</text>
+          <progress percent="{{profile.demographics.age18to24}}" stroke-width="3" activeColor="#b9c3ff" class="age-percent-bar" />
+          <text class="age-num">{{profile.demographics.age18to24}}%</text>
+        </view>
+        <view class="age-row">
+          <text class="age-range">25-34</text>
+          <progress percent="{{profile.demographics.age25to34}}" stroke-width="3" activeColor="#1a237e" class="age-percent-bar" />
+          <text class="age-num">{{profile.demographics.age25to34}}%</text>
+        </view>
+        <view class="age-row">
+          <text class="age-range">35-44</text>
+          <progress percent="{{profile.demographics.age35to44}}" stroke-width="3" activeColor="#b9c3ff" class="age-percent-bar" />
+          <text class="age-num">{{profile.demographics.age35to44}}%</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 兴趣偏好雷达图 -->
+    <view class="interests-block" style="margin-top: 20rpx;">
+      <text class="sub-title">兴趣偏好 (行业分布雷达)</text>
+      <radar-chart data="{{profile.interests}}" />
+    </view>
+  </view>
+</scroll-view>

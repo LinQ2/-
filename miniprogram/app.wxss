@@ -1,0 +1,22 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+
+/* 微信小程序全局字体设计 */
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 28rpx;
+  background-color: #f7f9fc;
+  color: #191c1e;
+}
+
+/* 通用动画提示 */
+.animate-hover {
+  transition: all 0.2s ease-in-out;
+}

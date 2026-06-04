@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs/promises";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
@@ -214,6 +215,71 @@ Respond ONLY with JSON matching:
     const match = (response.text || "").match(/\{[\s\S]*\}/);
     if (!match) throw new Error("JSON parse error");
     return res.json({ source: "gemini", data: JSON.parse(match[0]) });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+
+// Recursive helper function to scan and load WeChat miniprogram files directly from disk
+async function getMiniprogramFiles(): Promise<any[]> {
+  const rootDir = path.join(process.cwd(), "miniprogram");
+  const result: any[] = [];
+  
+  async function walk(dir: string) {
+    try {
+      const list = await fs.readdir(dir);
+      for (const item of list) {
+        const fullPath = path.join(dir, item);
+        const stat = await fs.stat(fullPath);
+        if (stat.isDirectory()) {
+          await walk(fullPath);
+        } else {
+          const relativePath = path.relative(rootDir, fullPath);
+          const extName = path.extname(item).replace(".", "").toLowerCase();
+          const content = await fs.readFile(fullPath, "utf-8");
+          result.push({
+            name: item,
+            path: relativePath,
+            type: extName === "wxss" ? "wxss" : extName === "wxml" ? "wxml" : extName === "js" ? "js" : extName === "json" ? "json" : "json",
+            content: content
+          });
+        }
+      }
+    } catch (e) {
+      console.error("Scanning miniprogram folder failed:", e);
+    }
+  }
+
+  await walk(rootDir);
+  return result;
+}
+
+// 4. GET WeChat Mini Program files dynamic list
+app.get("/api/miniprogram-files", async (req, res) => {
+  try {
+    const files = await getMiniprogramFiles();
+    return res.json({ files });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// 5. POST Save a WeChat Mini Program file edit back to workspace disk
+app.post("/api/miniprogram-files/save", async (req, res) => {
+  const { path: relativePath, content } = req.body;
+  if (!relativePath) {
+    return res.status(400).json({ error: "File path is required" });
+  }
+  
+  try {
+    const fullPath = path.join(process.cwd(), "miniprogram", relativePath);
+    // Ensure parent directories exist
+    await fs.mkdir(path.dirname(fullPath), { recursive: true });
+    await fs.writeFile(fullPath, content, "utf-8");
+    
+    const updatedFiles = await getMiniprogramFiles();
+    return res.json({ success: true, files: updatedFiles });
   } catch (err: any) {
     return res.status(500).json({ error: err.message });
   }

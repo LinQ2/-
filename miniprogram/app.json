@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/discover/discover",
+    "pages/analytics/analytics",
+    "pages/ailab/ailab",
+    "pages/mine/mine",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#f7f9fc",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "达人情报局",
+    "backgroundColor": "#f7f9fc",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#454652",
+    "selectedColor": "#1a237e",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/discover/discover",
+        "text": "探索",
+        "iconPath": "assets/explore.png",
+        "selectedIconPath": "assets/explore_sel.png"
+      },
+      {
+        "pagePath": "pages/analytics/analytics",
+        "text": "分析",
+        "iconPath": "assets/analytics.png",
+        "selectedIconPath": "assets/analytics_sel.png"
+      },
+      {
+        "pagePath": "pages/ailab/ailab",
+        "text": "AI实验室",
+        "iconPath": "assets/psychology.png",
+        "selectedIconPath": "assets/psychology_sel.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "assets/mine.png",
+        "selectedIconPath": "assets/mine_sel.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

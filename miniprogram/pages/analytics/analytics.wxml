@@ -1,0 +1,51 @@
+<!-- pages/analytics/analytics.wxml -->
+<navigation-bar title="数据分析" back="{{false}}"></navigation-bar>
+
+<scroll-view class="container" scroll-y="true">
+  <!-- 赛道横向对比 picker -->
+  <view class="panel-card">
+    <view class="panel-header">
+      <text class="panel-icon">📊</text>
+      <text class="panel-title">行业赛道大盘比对</text>
+    </view>
+    
+    <view class="picker-section">
+      <view class="picker-label">当前比对赛道:</view>
+      <picker bindchange="onCategorySelect" value="{{categoryIdx}}" range="{{categories}}">
+        <view class="picker-display">{{categories[categoryIdx]}} ▾</view>
+      </picker>
+    </view>
+
+    <!-- 关键数据展现 -->
+    <view class="stats-row">
+      <view class="stat-cell">
+        <text class="stat-number">{{metrics.activeCreators}}</text>
+        <text class="stat-label">活跃达人总数</text>
+      </view>
+      <view class="stat-cell">
+        <text class="stat-number">{{metrics.avgEngagement}}</text>
+        <text class="stat-label">行业平均互动率</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 竞品/对标分析 -->
+  <view class="panel-card">
+    <view class="panel-header">
+      <text class="panel-icon">⚡</text>
+      <text class="panel-title">主推赛道曝光分布</text>
+    </view>
+    
+    <view class="brand-bar-list">
+      <block wx:for="{{brandExposure}}" wx:key="name">
+        <view class="brand-bar-item">
+          <view class="brand-meta">
+            <text class="brand-name">{{item.name}}</text>
+            <text class="brand-val">{{item.exposure}}%</text>
+          </view>
+          <progress percent="{{item.exposure}}" stroke-width="6" activeColor="#1a237e" backgroundColor="#eceef1" />
+        </view>
+      </block>
+    </view>
+  </view>
+</scroll-view>

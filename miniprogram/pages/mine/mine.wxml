@@ -1,0 +1,55 @@
+<!-- pages/mine/mine.wxml -->
+<navigation-bar title="我的" back="{{false}}"></navigation-bar>
+
+<scroll-view class="container" scroll-y="true">
+  <!-- 个人卡片 -->
+  <view class="user-card">
+    <image class="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150" mode="aspectFill"></image>
+    <view class="user-info">
+      <text class="user-name">运营主理人</text>
+      <text class="user-id">ID: 849204859</text>
+    </view>
+    <text class="user-role badge-vip">高级MCN</text>
+  </view>
+
+  <!-- 仪表盘统计 -->
+  <view class="quick-stats">
+    <view class="stat-box">
+      <text class="stat-number">12</text>
+      <text class="stat-label">签约达人</text>
+    </view>
+    <view class="stat-box">
+      <text class="stat-number">4.8M</text>
+      <text class="stat-label">覆盖总粉</text>
+    </view>
+    <view class="stat-box">
+      <text class="stat-number">3</text>
+      <text class="stat-label">AI 测试脚本</text>
+    </view>
+  </view>
+
+  <!-- 功能列表菜单 -->
+  <view class="menu-list">
+    <view class="menu-item" bindtap="developTools">
+      <view class="menu-left">
+        <text class="menu-icon">🛠️</text>
+        <text class="menu-text">开发者工具同步</text>
+      </view>
+      <text class="menu-arrow">❯</text>
+    </view>
+    <view class="menu-item">
+      <view class="menu-left">
+        <text class="menu-icon">📄</text>
+        <text class="menu-text">脚本历史档案</text>
+      </view>
+      <text class="menu-arrow">❯</text>
+    </view>
+    <view class="menu-item">
+      <view class="menu-left">
+        <text class="menu-icon">⚙️</text>
+        <text class="menu-text">系统偏好设置</text>
+      </view>
+      <text class="menu-arrow">❯</text>
+    </view>
+  </view>
+</scroll-view>

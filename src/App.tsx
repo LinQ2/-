@@ -22,7 +22,8 @@ import {
   RotateCcw,
   UserCheck,
   CheckSquare,
-  Scale
+  Scale,
+  Save
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { InfluencerProfile, ScriptInspiration, TitlePrediction, MiniProgramFile } from './types';
@@ -248,9 +249,61 @@ export default function App() {
   const [compAccountA, setCompAccountA] = useState('Elena Chen');
   const [compAccountB, setCompAccountB] = useState('Style By Sarah');
 
-  // Mini Program IDE Code View State
-  const [selectedFile, setSelectedFile] = useState<MiniProgramFile>(wxmlFiles[1]); // Default to discover.wxml
+  // Mini Program IDE Dynamic Filesystem Sync State
+  const [files, setFiles] = useState<MiniProgramFile[]>(wxmlFiles);
+  const [selectedFilePath, setSelectedFilePath] = useState<string>("pages/discover/discover.wxml");
+  const [editorContent, setEditorContent] = useState<string>(wxmlFiles[1].content);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [saveStatus, setSaveStatus] = useState<string | null>(null);
   const [copiedFile, setCopiedFile] = useState<string | null>(null);
+
+  const currentFile = files.find(f => f.path === selectedFilePath) || files[0] || wxmlFiles[1];
+
+  // Sync editor content when selected file changes
+  useEffect(() => {
+    if (currentFile) {
+      setEditorContent(currentFile.content);
+    }
+  }, [selectedFilePath, files]);
+
+  // Load WeChat miniprogram files dynamic list from workspace disk
+  useEffect(() => {
+    fetch("/api/miniprogram-files")
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.files && data.files.length > 0) {
+          setFiles(data.files);
+        }
+      })
+      .catch(err => console.warn("WeChat live syncing offline. Falling back to simulated in-memory mode.", err));
+  }, []);
+
+  // Save changes back to server workspace disk
+  const handleSaveFile = async () => {
+    setIsSaving(true);
+    setSaveStatus("正在同步至 /miniprogram 目录...");
+    try {
+      const response = await fetch("/api/miniprogram-files/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ path: selectedFilePath, content: editorContent })
+      });
+      const data = await response.json();
+      if (data && data.success && data.files) {
+        setFiles(data.files);
+        setSaveStatus("✅ 保存成功！已同步至本地微信项目。");
+        setTimeout(() => setSaveStatus(null), 3000);
+      } else {
+        setSaveStatus("❌ 写入失败：" + (data.error || "未知解析错误"));
+        setTimeout(() => setSaveStatus(null), 5000);
+      }
+    } catch (e: any) {
+      setSaveStatus("❌ 写入失败：" + e.message);
+      setTimeout(() => setSaveStatus(null), 5000);
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   // Pull To Refresh Simulated Handler
   const triggerPullDownRefresh = () => {
@@ -429,63 +482,45 @@ export default function App() {
           <div className="flex-1 flex flex-col md:flex-row align-stretch">
             {/* Folder file structure rail */}
             <div className="w-full md:w-56 bg-slate-950/40 border-r border-slate-800 p-3 flex flex-col gap-2">
-              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider px-2 py-1">
-                Root Directory
+              <div className="text-xs font-bold text-slate-500 uppercase tracking-wider px-2 py-1 flex items-center justify-between">
+                <span>Root Directory</span>
+                <span className="text-[10px] bg-slate-800 text-indigo-400 px-1 py-0.5 rounded font-mono">App.json</span>
               </div>
-              <div className="flex flex-col gap-1.5 text-xs">
-                {/* Global app.json */}
-                <button 
-                  onClick={() => setSelectedFile(wxmlFiles[0])}
-                  className={`w-full text-left px-3 py-2 rounded-lg font-mono flex items-center gap-2 transition-all ${selectedFile.name === 'app.json' ? 'bg-indigo-950/50 text-indigo-300 border border-indigo-800/80' : 'text-slate-400 hover:bg-slate-800/40'}`}
-                >
-                  <span className="text-amber-500">⚙️</span> app.json
-                </button>
+              <div className="flex flex-col gap-1.5 text-xs overflow-y-auto max-h-[350px] pr-1">
+                {/* Global App files */}
+                {files.filter(f => !f.path.includes("/")).map(file => (
+                  <button 
+                    key={file.path}
+                    onClick={() => setSelectedFilePath(file.path)}
+                    className={`w-full text-left px-3 py-1.5 rounded-lg font-mono flex items-center gap-2 transition-all ${selectedFilePath === file.path ? 'bg-indigo-950/50 text-indigo-300 border border-indigo-800/80 font-semibold' : 'text-slate-400 hover:bg-slate-800/40'}`}
+                  >
+                    <span className="text-amber-500 text-xs">⚙️</span> {file.name}
+                  </button>
+                ))}
 
                 <div className="h-[1px] bg-slate-800/60 my-2"></div>
-                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider px-2 py-1">
-                  Pages Folder
+                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider px-2 py-1 flex items-center justify-between">
+                  <span>Pages Folder</span>
+                  <span className="text-[9px] bg-slate-800 text-cyan-400 px-1 py-0.5 rounded font-mono">WeChat Pages</span>
                 </div>
 
                 {/* Page Files */}
-                <button 
-                  onClick={() => setSelectedFile(wxmlFiles[1])}
-                  className={`w-full text-left px-3 py-2 rounded-lg font-mono flex items-center gap-2 transition-all ${selectedFile.name === 'discover.wxml' ? 'bg-indigo-950/50 text-indigo-300 border border-indigo-800/80' : 'text-slate-400 hover:bg-slate-800/40'}`}
-                >
-                  <span className="text-cyan-400">📝</span> discover.wxml
-                </button>
-
-                <button 
-                  onClick={() => setSelectedFile(wxmlFiles[2])}
-                  className={`w-full text-left px-3 py-2 rounded-lg font-mono flex items-center gap-2 transition-all ${selectedFile.name === 'discover.js' ? 'bg-indigo-950/50 text-indigo-300 border border-indigo-800/80' : 'text-slate-400 hover:bg-slate-800/40'}`}
-                >
-                  <span className="text-amber-400 font-bold">JS</span> discover.js
-                </button>
-
-                <button 
-                  onClick={() => {
-                    // Create object dynamically for wxss if clicked
-                    setSelectedFile({
-                      name: "discover.wxss",
-                      path: "pages/discover/discover.wxss",
-                      type: "wxss",
-                      content: wxmlFiles[3].content
-                    });
-                  }}
-                  className={`w-full text-left px-3 py-2 rounded-lg font-mono flex items-center gap-2 transition-all ${selectedFile.name === 'discover.wxss' ? 'bg-indigo-950/50 text-indigo-300 border border-indigo-800/80' : 'text-slate-400 hover:bg-slate-800/40'}`}
-                >
-                  <span className="text-blue-400">🎨</span> discover.wxss
-                </button>
-
-                <button 
-                  onClick={() => setSelectedFile(wxmlFiles[4])}
-                  className={`w-full text-left px-3 py-2 rounded-lg font-mono flex items-center gap-2 transition-all ${selectedFile.name === 'profile.wxml' ? 'bg-indigo-950/50 text-indigo-300 border border-indigo-800/80' : 'text-slate-400 hover:bg-slate-800/40'}`}
-                >
-                  <span className="text-cyan-400">📝</span> profile.wxml
-                </button>
+                {files.filter(f => f.path.includes("/")).map(file => (
+                  <button 
+                    key={file.path}
+                    onClick={() => setSelectedFilePath(file.path)}
+                    className={`w-full text-left px-3 py-1.5 rounded-lg font-mono flex items-center gap-2 transition-all ${selectedFilePath === file.path ? 'bg-indigo-950/50 text-indigo-300 border border-indigo-800/80 font-semibold' : 'text-slate-400 hover:bg-slate-800/40'}`}
+                  >
+                    <span className={file.type === 'wxml' ? 'text-cyan-400' : file.type === 'js' ? 'text-yellow-400' : file.type === 'wxss' ? 'text-sky-400' : 'text-amber-400'}>
+                      {file.type === 'wxml' ? '📝' : file.type === 'js' ? 'JS' : file.type === 'wxss' ? '🎨' : '⚙️'}
+                    </span>
+                    <span className="truncate flex-1 text-slate-300">{file.path.replace("pages/", "")}</span>
+                  </button>
+                ))}
               </div>
 
               {/* WeChat Mini Program Education Tip */}
-              <div className="mt-auto bg-slate-900 border border-slate-800 p-3 rounded-xl">
+              <div className="mt-auto bg-slate-900 border border-slate-800 p-3 rounded-xl hidden md:block">
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-300 mb-1">
                   <Zap className="w-3.5 h-3.5 text-yellow-400" />
                   WXML 标签小贴士
@@ -501,17 +536,17 @@ export default function App() {
               <div className="flex items-center justify-between mb-3 border-b border-slate-800 pb-3">
                 <div className="flex items-center gap-2">
                   <span className="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded font-mono">
-                    {selectedFile.path}
+                    {currentFile.path}
                   </span>
                   <span className="text-[10px] text-slate-500 font-mono">
-                    {selectedFile.type.toUpperCase()} syntax configuration
+                    {currentFile.type.toUpperCase()} syntax configuration
                   </span>
                 </div>
                 <button 
-                  onClick={() => handleCopyCode(selectedFile.content, selectedFile.name)}
+                  onClick={() => handleCopyCode(editorContent, currentFile.name)}
                   className="bg-slate-800 hover:bg-slate-700/80 text-xs text-slate-300 font-medium px-3 py-1.5 rounded-lg border border-slate-700/80 flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
                 >
-                  {copiedFile === selectedFile.name ? (
+                  {copiedFile === currentFile.name ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
                       已复制
@@ -525,18 +560,41 @@ export default function App() {
                 </button>
               </div>
 
-              {/* Code viewer pane */}
-              <div className="flex-1 overflow-auto rounded-xl border border-slate-800 bg-slate-950/90 font-mono p-4 text-xs text-slate-300 leading-relaxed max-h-[640px]">
-                <pre className="whitespace-pre overflow-x-auto text-[11px]">
-                  <code>{selectedFile.content}</code>
-                </pre>
+              {/* Code editor container pane */}
+              <div className="flex-1 flex flex-col rounded-xl border border-slate-800 bg-slate-950/95 font-mono p-1 overflow-hidden min-h-[460px]">
+                <textarea
+                  value={editorContent}
+                  onChange={(e) => setEditorContent(e.target.value)}
+                  className="flex-1 w-full bg-transparent font-mono text-xs text-slate-300 p-4 leading-relaxed outline-none resize-none focus:ring-1 focus:ring-indigo-500/30 rounded-lg h-full"
+                  placeholder="正在拉取小程序源配置文件..."
+                  spellCheck="false"
+                />
+              </div>
+
+              {/* Action operations and saving panel */}
+              <div className="mt-3 flex items-center justify-between">
+                <div className="text-[10px] text-slate-500 font-mono">
+                  {saveStatus ? (
+                    <span className="text-indigo-400 font-medium animate-pulse">{saveStatus}</span>
+                  ) : (
+                    <span>直接在此处编辑源码，保存即可在右侧动态模拟调试</span>
+                  )}
+                </div>
+                <button
+                  onClick={handleSaveFile}
+                  disabled={isSaving}
+                  className="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all flex items-center gap-1.5 shadow-md active:scale-95 cursor-pointer animate-hover"
+                >
+                  <Save className="w-3.5 h-3.5" />
+                  {isSaving ? "正在保存..." : "💾 保存修改并同步"}
+                </button>
               </div>
 
               {/* Explanation of parameters */}
               <div className="mt-4 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                <h4 className="text-xs font-semibold text-cyan-400 mb-1">当前组件分析与系统映射</h4>
+                <h4 className="text-xs font-semibold text-cyan-400 mb-1">当前组件分析与 system 映射</h4>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  在右侧模拟器中进行的每一步互动（如：切换Douyin/小红书平台、点击李佳琦发起AI分析、在实验室一键预测标题），其底层的逻辑都严格遵循 WeChat Mini Program 开发标准映射。代码可随时提取并贴入您的微信号开发者工具中完成生产力转化！
+                  在左侧进行了源码保存后，底层的 Express 容器服务器将直接在主机的 <code className="text-indigo-300">/miniprogram</code> 目录中同步写入真实物理文件。开发所得随时可整体打包直接在微信官方开发者工具中直接加载运行！
                 </p>
               </div>
             </div>
