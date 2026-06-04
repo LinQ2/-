@@ -34,191 +34,195 @@ import InfluenceMap from './components/InfluenceMap';
 // Standard static popular influencers to provide initial premium database
 const INITIAL_INFLUENCERS: InfluencerProfile[] = [
   {
-    id: "Elena_Chen",
-    name: "Elena Chen",
-    handle: "@elenastyles",
-    category: "时尚生活",
-    platform: "Xiaohongshu",
+    id: "Mizijun",
+    name: "密子君",
+    handle: "@mizijun_spicy",
+    category: "重辣老火锅 / 江湖菜探店",
+    city: "成都",
+    platform: "Douyin",
     avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDas_m3fIgwCyQnPOZhJ8lqQCEHMJbfNV_7FNDlqq7i3KTTCKb77UcNYW40MKIoivL80SIv2DNBxQPI8uv76unxLGTzYjQVRZJQbPL4T2DXfwfQlewmaC7WPPdFca20gbAJJJP-DnIVbUu15HDANUKtVZsfTlrVkJZj7ezuo_jteXMqmO45WE0yfgdGQ2GPR91NRYrvJl3jULRjfMTo5QNrjKwydDuQSVgOKMTbnL14auoe4eTbV2i8EcBjdiMckYUKDVNOJmZKkRg",
-    followers: "2.4M",
-    engagementRate: "18%",
-    avgLikes: "45K",
-    brandFitScore: 94,
+    followers: "18.5M",
+    engagementRate: "16.4%",
+    avgLikes: "230K",
+    brandFitScore: 95,
     brandMatchLevel: "极佳匹配",
     aiPotential: {
       viralProbability: "高",
-      viralScore: 85,
+      viralScore: 94,
       conversionRate: "强",
-      conversionScore: 72,
+      conversionScore: 91,
       loyalty: "稳定",
-      loyaltyScore: 65
+      loyaltyScore: 88
     },
     demographics: {
-      femalePercentage: 78,
-      malePercentage: 22,
-      age18to24: 35,
-      age25to34: 45,
+      femalePercentage: 65,
+      malePercentage: 35,
+      age18to24: 45,
+      age25to34: 40,
       age35to44: 15
     },
     trafficTrend: [
-      { date: "10-01", exposure: 30 },
-      { date: "10-04", exposure: 45 },
-      { date: "10-08", exposure: 40 },
-      { date: "10-12", exposure: 70 },
-      { date: "10-15", exposure: 60 },
-      { date: "10-18", exposure: 55 },
-      { date: "10-22", exposure: 80 },
-      { date: "10-25", exposure: 65 },
-      { date: "10-28", exposure: 95 },
-      { date: "10-30", exposure: 75 }
+      { date: "10-01", exposure: 60 },
+      { date: "10-04", exposure: 75 },
+      { date: "10-08", exposure: 70 },
+      { date: "10-12", exposure: 95 },
+      { date: "10-15", exposure: 80 },
+      { date: "10-18", exposure: 72 },
+      { date: "10-22", exposure: 88 },
+      { date: "10-25", exposure: 90 },
+      { date: "10-28", exposure: 120 },
+      { date: "10-30", exposure: 110 }
     ],
     interests: [
-      { name: "美装护肤", value: 92 },
-      { name: "时尚穿搭", value: 89 },
-      { name: "高端手袋", value: 78 },
-      { name: "品质旅行", value: 65 },
-      { name: "生活摄影", value: 58 }
+      { name: "川渝九宫格", value: 95 },
+      { name: "宵夜大排档", value: 89 },
+      { name: "大胃王吃播", value: 85 },
+      { name: "城市美食卡", value: 78 },
+      { name: "国货调味品", value: 72 }
     ]
   },
   {
-    id: "LunaTech",
-    name: "LunaTech",
-    handle: "@lunatech_labs",
-    category: "数码科技",
+    id: "Taozijie",
+    name: "蜀中桃子姐",
+    handle: "@sichuan_taozijie",
+    category: "乡村柴火慢炖 / 传统川菜",
+    city: "重庆",
     platform: "Douyin",
     avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBzjeej0CI_4b9zsTHPubk043Lz0jcAxUtL0N5MOkcF03gvg7X9_6Gs81wVaqFf5l84l7qle3IjLbOC6QwnnUYQUweIUy-38hNkvWa00cfRenyr5K-V_XZYg10YbEA-OPja5rh1EOHoY1yA2DYzlu0EiSKTn4yyuhP2dyO-aaLopO11jgAg0Xb0OSNm6WSLWDcemAr_c1te_jwTMY-F63dLfcgI6CRqyJ3GVowe35JG65Vx0ohWBPtBc1tqRPmc-ZgtgVgIcfSBin4",
-    followers: "1.2M",
-    engagementRate: "14%",
-    avgLikes: "32K",
-    brandFitScore: 89,
-    brandMatchLevel: "优秀匹配",
+    followers: "21.2M",
+    engagementRate: "18.2%",
+    avgLikes: "250K",
+    brandFitScore: 96,
+    brandMatchLevel: "极佳匹配",
     aiPotential: {
       viralProbability: "高",
-      viralScore: 89,
+      viralScore: 96,
       conversionRate: "优秀",
-      conversionScore: 81,
-      loyalty: "稳定",
-      loyaltyScore: 78
+      conversionScore: 92,
+      loyalty: "极高",
+      loyaltyScore: 95
     },
     demographics: {
-      femalePercentage: 25,
-      malePercentage: 75,
+      femalePercentage: 55,
+      malePercentage: 45,
+      age18to24: 25,
+      age25to34: 50,
+      age35to44: 25
+    },
+    trafficTrend: [
+      { date: "10-01", exposure: 50 },
+      { date: "10-04", exposure: 65 },
+      { date: "10-08", exposure: 58 },
+      { date: "10-12", exposure: 80 },
+      { date: "10-15", exposure: 92 },
+      { date: "10-18", exposure: 85 },
+      { date: "10-22", exposure: 98 },
+      { date: "10-25", exposure: 89 },
+      { date: "10-28", exposure: 110 },
+      { date: "10-30", exposure: 105 }
+    ],
+    interests: [
+      { name: "柴火走地鸡", value: 96 },
+      { name: "传统自制酱", value: 90 },
+      { name: "田园风调料", value: 87 },
+      { name: "五谷粗杂粮", value: 76 },
+      { name: "家常快手菜", value: 70 }
+    ]
+  },
+  {
+    id: "Daoyueshe",
+    name: "盗月社食遇记",
+    handle: "@daoyueshe_eats",
+    category: "街头传统老字号 / 暖心夜市",
+    city: "重庆",
+    platform: "Xiaohongshu",
+    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJNbh2k95zKdZbKAcsz9k5T5LFQ-TEw4oBIcybIQXWqZYDkQbyhr-nVbSt2HxjjKVdfOFV_72QWpqrN_dlCiols4pHC8_G8mCVgpClIifMsIckSN6LLdiUglRpWRj7T1KlMWzsgRx_hpDtDBsan1o-wll0fwpWUVHYzdHVZNZ9MzxgtX2E-si3Fn57y97ct43FQAUwUZXPR_AJMtwJ3b70wb9Wb0NqG1c6F3AmfM_5As5soouk3T8avTq6dR8bU_W9OctnIUFlCss",
+    followers: "8.6M",
+    engagementRate: "12.5%",
+    avgLikes: "92K",
+    brandFitScore: 92,
+    brandMatchLevel: "极佳匹配",
+    aiPotential: {
+      viralProbability: "高",
+      viralScore: 91,
+      conversionRate: "强",
+      conversionScore: 89,
+      loyalty: "稳定",
+      loyaltyScore: 86
+    },
+    demographics: {
+      femalePercentage: 48,
+      malePercentage: 52,
       age18to24: 40,
       age25to34: 48,
       age35to44: 12
     },
     trafficTrend: [
-      { date: "10-01", exposure: 20 },
-      { date: "10-04", exposure: 55 },
-      { date: "10-08", exposure: 42 },
-      { date: "10-12", exposure: 50 },
-      { date: "10-15", exposure: 78 },
-      { date: "10-18", exposure: 61 },
-      { date: "10-22", exposure: 83 },
-      { date: "10-25", exposure: 62 },
-      { date: "10-28", exposure: 89 },
-      { date: "10-30", exposure: 80 }
+      { date: "10-01", exposure: 35 },
+      { date: "10-04", exposure: 42 },
+      { date: "10-08", exposure: 50 },
+      { date: "10-12", exposure: 68 },
+      { date: "10-15", exposure: 60 },
+      { date: "10-18", exposure: 55 },
+      { date: "10-22", exposure: 80 },
+      { date: "10-25", exposure: 75 },
+      { date: "10-28", exposure: 98 },
+      { date: "10-30", exposure: 92 }
     ],
     interests: [
-      { name: "智能手机", value: 95 },
-      { name: "极客配件", value: 89 },
-      { name: "电脑DIY", value: 82 },
-      { name: "智能家居", value: 75 },
-      { name: "前沿科技", value: 68 }
+      { name: "非遗老字号", value: 92 },
+      { name: "市井下酒菜", value: 88 },
+      { name: "深夜大排档", value: 81 },
+      { name: "城市慢享餐", value: 75 },
+      { name: "冷链预制菜", value: 64 }
     ]
   },
   {
-    id: "DavidCodes",
-    name: "David Codes",
-    handle: "@david_reviews",
-    category: "数码测评",
-    platform: "Douyin",
-    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJNbh2k95zKdZbKAcsz9k5T5LFQ-TEw4oBIcybIQXWqZYDkQbyhr-nVbSt2HxjjKVdfOFV_72QWpqrN_dlCiols4pHC8_G8mCVgpClIifMsIckSN6LLdiUglRpWRj7T1KlMWzsgRx_hpDtDBsan1o-wll0fwpWUVHYzdHVZNZ9MzxgtX2E-si3Fn57y97ct43FQAUwUZXPR_AJMtwJ3b70wb9Wb0NqG1c6F3AmfM_5As5soouk3T8avTq6dR8bU_W9OctnIUFlCss",
-    followers: "2.4M",
-    engagementRate: "12.5%",
-    avgLikes: "38K",
-    brandFitScore: 92,
-    brandMatchLevel: "极佳匹配",
+    id: "Hangzhou_Daliang",
+    name: "杭州餐饮阿亮",
+    handle: "@hz_gourmet_liang",
+    category: "新派融合杭帮菜 / 奢享私房宴",
+    city: "杭州",
+    platform: "Xiaohongshu",
+    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuD5J-q7uBFTxXMwVRjL25An5RKBglN3P8THwbeyvnsW5COgh0nA_V5wOPQEAEQK5g8B9ot_r23pOwWadWhlKVugxnvXrwQc5Sp-__hspgHf_9ks_1OTGhqXuMd3U7KliKrP39lDJSQ0esu7J45py4hcDPhAJqiYhFAOiva_khEvznvhdtDUhndrufaT0LXTnCiP5gr1iVrEkLx0nrcoe9LjKNKYQCYG0Fe_v6M9CJla0LcHKpKxmk-GmXHJbI1ijRIfukVWUiRSyXA",
+    followers: "3.8M",
+    engagementRate: "9.2%",
+    avgLikes: "42K",
+    brandFitScore: 88,
+    brandMatchLevel: "优秀匹配",
     aiPotential: {
-      viralProbability: "高",
-      viralScore: 92,
-      conversionRate: "强",
-      conversionScore: 88,
+      viralProbability: "稳定",
+      viralScore: 84,
+      conversionRate: "高",
+      conversionScore: 82,
       loyalty: "稳定",
-      loyaltyScore: 82
+      loyaltyScore: 85
     },
     demographics: {
-      femalePercentage: 20,
-      malePercentage: 80,
+      femalePercentage: 62,
+      malePercentage: 38,
       age18to24: 30,
       age25to34: 55,
       age35to44: 15
     },
     trafficTrend: [
       { date: "10-01", exposure: 25 },
-      { date: "10-04", exposure: 35 },
-      { date: "10-08", exposure: 40 },
-      { date: "10-12", exposure: 60 },
-      { date: "10-15", exposure: 55 },
-      { date: "10-18", exposure: 48 },
-      { date: "10-22", exposure: 75 },
-      { date: "10-25", exposure: 65 },
-      { date: "10-28", exposure: 90 },
-      { date: "10-30", exposure: 82 }
+      { date: "10-04", exposure: 30 },
+      { date: "10-08", exposure: 35 },
+      { date: "10-12", exposure: 42 },
+      { date: "10-15", exposure: 48 },
+      { date: "10-18", exposure: 55 },
+      { date: "10-22", exposure: 60 },
+      { date: "10-25", exposure: 58 },
+      { date: "10-28", exposure: 75 },
+      { date: "10-30", exposure: 70 }
     ],
     interests: [
-      { name: "软件工具", value: 90 },
-      { name: "数码硬件", value: 85 },
-      { name: "极客穿搭", value: 72 },
-      { name: "品质生活", value: 63 },
-      { name: "知识科普", value: 55 }
-    ]
-  },
-  {
-    id: "StyleBySarah",
-    name: "Style By Sarah",
-    handle: "@sarah_fashion",
-    category: "时尚生活",
-    platform: "Xiaohongshu",
-    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuD5J-q7uBFTxXMwVRjL25An5RKBglN3P8THwbeyvnsW5COgh0nA_V5wOPQEAEQK5g8B9ot_r23pOwWadWhlKVugxnvXrwQc5Sp-__hspgHf_9ks_1OTGhqXuMd3U7KliKrP39lDJSQ0esu7J45py4hcDPhAJqiYhFAOiva_khEvznvhdtDUhndrufaT0LXTnCiP5gr1iVrEkLx0nrcoe9LjKNKYQCYG0Fe_v6M9CJla0LcHKpKxmk-GmXHJbI1ijRIfukVWUiRSyXA",
-    followers: "1.8M",
-    engagementRate: "8.2%",
-    avgLikes: "22K",
-    brandFitScore: 88,
-    brandMatchLevel: "优秀匹配",
-    aiPotential: {
-      viralProbability: "稳定",
-      viralScore: 84,
-      conversionRate: "中",
-      conversionScore: 78,
-      loyalty: "稳定",
-      loyaltyScore: 80
-    },
-    demographics: {
-      femalePercentage: 82,
-      malePercentage: 18,
-      age18to24: 45,
-      age25to34: 40,
-      age35to44: 15
-    },
-    trafficTrend: [
-      { date: "10-01", exposure: 40 },
-      { date: "10-04", exposure: 42 },
-      { date: "10-08", exposure: 48 },
-      { date: "10-12", exposure: 52 },
-      { date: "10-15", exposure: 58 },
-      { date: "10-18", exposure: 64 },
-      { date: "10-22", exposure: 70 },
-      { date: "10-25", exposure: 68 },
-      { date: "10-28", exposure: 80 },
-      { date: "10-30", exposure: 78 }
-    ],
-    interests: [
-      { name: "日常穿搭", value: 94 },
-      { name: "好物开箱", value: 87 },
-      { name: "美发造型", value: 80 },
-      { name: "下午茶打卡", value: 70 },
-      { name: "健身瑜伽", value: 62 }
+      { name: "精致江浙菜", value: 95 },
+      { name: "私房融合菜", value: 89 },
+      { name: "奢享黑珍珠", value: 84 },
+      { name: "西式小酒馆", value: 72 },
+      { name: "新茶饮烘焙", value: 65 }
     ]
   }
 ];
@@ -232,6 +236,37 @@ export default function App() {
   const [selectedCreator, setSelectedCreator] = useState<InfluencerProfile | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [database, setDatabase] = useState<InfluencerProfile[]>(INITIAL_INFLUENCERS);
+  const [cateringExclusive, setCateringExclusive] = useState(true); // Default to true since the user is focused on food
+  const [selectedCityFilter, setSelectedCityFilter] = useState<'全部' | '成都' | '重庆' | '杭州'>('全部');
+
+  const filteredDatabase = database.filter(x => {
+    if (x.platform !== platform) return false;
+
+    if (cateringExclusive) {
+      const cat = (x.category || "").toLowerCase();
+      const name = (x.name || "").toLowerCase();
+      const interests = (x.interests || []).map(i => i.name.toLowerCase()).join(" ");
+      const isCatering = (
+        ["成都", "重庆", "杭州"].includes(x.city || "") ||
+        cat.includes("火锅") || cat.includes("菜") || cat.includes("餐") || cat.includes("食") || cat.includes("大排档") || cat.includes("小吃") || cat.includes("吃播") || cat.includes("店") ||
+        name.includes("餐饮") || name.includes("美食") || name.includes("吃") ||
+        interests.includes("锅") || interests.includes("餐") || interests.includes("食")
+      );
+
+      if (!isCatering) return false;
+
+      if (selectedCityFilter !== '全部') {
+        const itemCity = x.city || "";
+        if (itemCity !== selectedCityFilter) return false;
+      } else {
+        if (!x.city || !["成都", "重庆", "杭州"].includes(x.city)) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  });
 
   // AI Script Generator State
   const [scriptTopic, setScriptTopic] = useState('');
@@ -417,9 +452,9 @@ export default function App() {
   };
 
   const activeCategoryList = [
-    { name: '极简美妆', heat: '1.2M', icon: '💄' },
-    { name: 'AI生产力工具', heat: '850K', icon: '💻' },
-    { name: '可持续时尚', heat: '620K', icon: '🎽' }
+    { name: '川渝老火锅与串串香', heat: '2.4M', icon: '🌶️' },
+    { name: '杭州精品新派杭帮菜', heat: '1.5M', icon: '🍵' },
+    { name: '市井江湖菜与深夜烧烤', heat: '980K', icon: '🍢' }
   ];
 
   return (
@@ -975,6 +1010,67 @@ export default function App() {
                               小红书分析
                             </button>
                           </div>
+
+                          {/* 🌶️ Catering Exclusive Mode Selector Panel */}
+                          <button
+                            onClick={() => {
+                              setCateringExclusive(prev => !prev);
+                              // Reset city filter if disabling
+                              if (cateringExclusive) {
+                                setSelectedCityFilter('全部');
+                              }
+                            }}
+                            className={`w-full mt-3 p-3 rounded-xl border flex items-center justify-between text-left transition-all cursor-pointer relative overflow-hidden outline-none ${
+                              cateringExclusive 
+                                ? 'bg-gradient-to-r from-orange-500 to-amber-500 border-transparent text-white shadow-md active:scale-98' 
+                                : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-98'
+                            }`}
+                          >
+                            <div className="flex items-center gap-2.5 z-10">
+                              <span className="text-base select-none">🌶️</span>
+                              <div>
+                                <h4 className="text-[11px] font-bold leading-tight">餐饮行业专属模式</h4>
+                                <p className={`text-[9px] font-mono leading-tight mt-0.5 ${cateringExclusive ? 'text-amber-100' : 'text-slate-400'}`}>
+                                  核心覆盖：成渝抗（成都、重庆、杭州）餐饮大盘
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1.5 z-10">
+                              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${cateringExclusive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'}`}>
+                                {cateringExclusive ? '已开启' : '已关闭'}
+                              </span>
+                            </div>
+                          </button>
+
+                          {cateringExclusive && (
+                            <div className="bg-slate-50/80 border border-slate-200/60 rounded-xl p-2.5 mt-2 shadow-inner">
+                              <div className="flex items-center justify-between mb-1.5">
+                                <span className="text-[9px] font-bold text-slate-500 flex items-center gap-1 select-none">
+                                  🗺️ 核心城市地理位置聚合策略
+                                </span>
+                                <span className="text-[8px] font-mono text-indigo-600 font-bold bg-indigo-50 px-1 rounded">
+                                  精准餐饮探店
+                                </span>
+                              </div>
+                              <div className="grid grid-cols-4 gap-1">
+                                {(['全部', '成都', '重庆', '杭州'] as const).map((city) => {
+                                  const count = database.filter(x => 
+                                    x.platform === platform && 
+                                    (city === '全部' ? ["成都", "重庆", "杭州"].includes(x.city || "") : x.city === city)
+                                  ).length;
+                                  return (
+                                    <button
+                                      key={city}
+                                      onClick={() => setSelectedCityFilter(city)}
+                                      className={`py-1 rounded-lg text-[9px] font-bold cursor-pointer transition-all ${selectedCityFilter === city ? 'bg-slate-800 text-white shadow-xs scale-102' : 'bg-white hover:bg-slate-100 border border-slate-200 text-slate-600'}`}
+                                    >
+                                      {city === '全部' ? '全部' : city} ({count})
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
                         </div>
 
                         {/* Top AI predicted star section */}
@@ -986,19 +1082,19 @@ export default function App() {
                           
                           <div 
                             onClick={() => {
-                              const found = database.find(x => x.id === "LunaTech");
+                              const found = database.find(x => x.id === "Taozijie");
                               if (found) setSelectedCreator(found);
                             }}
                             className="bg-slate-50/70 p-3 rounded-xl border border-slate-100 flex items-center gap-3.5 hover:bg-slate-50 transition-colors cursor-pointer"
                           >
                             <img 
                               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzjeej0CI_4b9zsTHPubk043Lz0jcAxUtL0N5MOkcF03gvg7X9_6Gs81wVaqFf5l84l7qle3IjLbOC6QwnnUYQUweIUy-38hNkvWa00cfRenyr5K-V_XZYg10YbEA-OPja5rh1EOHoY1yA2DYzlu0EiSKTn4yyuhP2dyO-aaLopO11jgAg0Xb0OSNm6WSLWDcemAr_c1te_jwTMY-F63dLfcgI6CRqyJ3GVowe35JG65Vx0ohWBPtBc1tqRPmc-ZgtgVgIcfSBin4" 
-                              alt="Luna" 
+                              alt="Taozijie" 
                               className="w-12 h-12 rounded-full object-cover border border-slate-200" 
                             />
                             <div className="flex-1 min-w-0">
-                              <h4 className="text-xs font-bold text-slate-800 truncate">@LunaTech</h4>
-                              <p className="text-[10px] text-slate-500 font-mono mt-0.5">数码科技智能推荐</p>
+                              <h4 className="text-xs font-bold text-slate-800 truncate">@蜀中桃子姐</h4>
+                              <p className="text-[10px] text-slate-500 font-mono mt-0.5">川菜民俗餐饮智能推荐</p>
                             </div>
                             <div className="text-right">
                               <span className="text-sm font-bold text-teal-600 block leading-tight font-mono">+84%</span>
@@ -1012,7 +1108,18 @@ export default function App() {
                         </div>
 
                         {/* Region-based hot creator distribution map */}
-                        <InfluenceMap currentPlatform={platform} />
+                        <InfluenceMap 
+                          currentPlatform={platform} 
+                          onCitySelect={(city) => {
+                            if (["成都", "重庆", "杭州"].includes(city)) {
+                              setCateringExclusive(true);
+                              setSelectedCityFilter(city as '全部' | '成都' | '重庆' | '杭州');
+                              showToastNotification(`🎯 已定位到【${city}】餐饮专属数据下钻分析！`);
+                            } else {
+                              showToastNotification(`🌶️ 餐饮行业模式仅对【成渝杭】核心商圈提供深度位置策略。`);
+                            }
+                          }}
+                        />
 
                         {/* Popular categories section */}
                         <div className="bg-white border border-[#eceef1] rounded-2xl p-4 shadow-sm mb-5">
@@ -1055,9 +1162,16 @@ export default function App() {
                           </div>
 
                           <div className="flex flex-col gap-2.5">
-                            {database
-                              .filter(x => x.platform === platform)
-                              .map((item, idx) => (
+                            {filteredDatabase.length === 0 ? (
+                              <div className="text-center py-8 px-4 border border-dashed border-slate-200 rounded-xl bg-slate-50/50">
+                                <span className="text-xl block mb-1">🌶️</span>
+                                <h4 className="text-xs font-bold text-slate-700">没有符合筛选条件的达人</h4>
+                                <p className="text-[10px] text-slate-400 mt-1 max-w-[200px] mx-auto leading-relaxed">
+                                  当前城市暂无抓取到的数据。请尝试在上方输入新达人ID进行AI诊断自动添加！
+                                </p>
+                              </div>
+                            ) : (
+                              filteredDatabase.map((item, idx) => (
                                 <motion.div 
                                   key={item.id}
                                   onClick={() => setSelectedCreator(item)}
@@ -1076,7 +1190,14 @@ export default function App() {
                                       <span className="truncate">{item.name}</span>
                                       <span className="text-teal-600">✓</span>
                                     </div>
-                                    <p className="text-[9px] text-slate-400 font-mono mt-0.5">{item.category}</p>
+                                    <div className="flex items-center gap-1.5 mt-0.5">
+                                      <p className="text-[9px] text-slate-400 font-mono truncate max-w-[120px]">{item.category}</p>
+                                      {item.city && (
+                                        <span className="text-[8px] px-1 bg-amber-50 text-amber-700 border border-amber-200/50 rounded leading-none py-0.5 font-bold font-mono">
+                                          {item.city}
+                                        </span>
+                                      )}
+                                    </div>
                                   </div>
                                   <div className="text-right">
                                     <span className="text-xs font-mono font-bold text-slate-800 block">{item.followers}</span>
@@ -1085,7 +1206,8 @@ export default function App() {
                                     </span>
                                   </div>
                                 </motion.div>
-                              ))}
+                              ))
+                            )}
                           </div>
                         </div>
 
@@ -1226,10 +1348,10 @@ export default function App() {
                                   onChange={(e) => setScriptCategory(e.target.value)}
                                   className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs font-mono focus:outline-none"
                                 >
-                                  <option>美妆护肤</option>
-                                  <option>数码科技</option>
-                                  <option>时尚穿搭</option>
-                                  <option>知识大类</option>
+                                  <option>川湘火锅江湖菜</option>
+                                  <option>精致创意杭帮菜</option>
+                                  <option>早茶点心与粤菜</option>
+                                  <option>街头小吃与大排档</option>
                                 </select>
                               </div>
                               <button 
@@ -1285,9 +1407,9 @@ export default function App() {
                                   onChange={(e) => setTitleCategory(e.target.value)}
                                   className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs font-mono focus:outline-none"
                                 >
-                                  <option>美妆护肤</option>
-                                  <option>数码测评</option>
-                                  <option>生活方式</option>
+                                  <option>川湘火锅江湖菜</option>
+                                  <option>精致创意杭帮菜</option>
+                                  <option>早茶点心与粤菜</option>
                                 </select>
                               </div>
                               <button 

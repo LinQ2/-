@@ -54,7 +54,8 @@ You MUST respond ONLY with a single JSON object. Do not wrap in markdown blocks,
 {
   "name": "name of influencer",
   "handle": "unique username or ID, starting with @. If not found, create one based on name pinyin.",
-  "category": "one of: 时尚穿搭, 美妆护肤, 数码测评, 生活方式, 知识科普, 萌宠搞笑, 运动健身",
+  "category": "one of: 川味火锅 / 串串香, 江湖菜 / 特色川湘菜, 江南精致料理, 新概念创意杭帮菜, 特色街头小吃, 市井大排档, 大胃吃播探店, 美食探店, 饮食推荐",
+  "city": "the main city they operate or eat in. Typically one of: 成都, 重庆, 杭州 (or default to one of these if it matches local topics)",
   "platform": "Douyin" or "Xiaohongshu",
   "followers": "follower string e.g. 5.2M, 850k",
   "engagementRate": "estimated engagement rate e.g. 12.4%",
@@ -292,8 +293,11 @@ function generateSmartMockInfluencer(name: string, platform: string) {
   let charSum = 0;
   for (let i = 0; i < name.length; i++) charSum += name.charCodeAt(i);
 
-  const categories = ["时尚穿搭", "美妆护肤", "数码测评", "生活方式", "萌宠搞笑", "知识科普", "美食探店"];
+  const categories = ["川味火锅 / 串串香", "江湖菜 / 特色川湘菜", "江南精致料理", "新概念创意杭帮菜", "特色街头小吃", "市井大排档", "大胃吃播探店"];
   const selectCategory = categories[charSum % categories.length];
+
+  const cities = ["成都", "重庆", "杭州"];
+  const selectCity = cities[charSum % cities.length];
 
   // Adjust metrics based on category & name length
   const baseFollowersValue = ((charSum % 85) / 10 + 0.3).toFixed(1);
@@ -323,6 +327,7 @@ function generateSmartMockInfluencer(name: string, platform: string) {
     name: name,
     handle: `@${handlePinyin || "creativelab"}`,
     category: selectCategory,
+    city: selectCity,
     platform: platform === "Douyin" ? "Douyin" : "Xiaohongshu",
     followers: followersStr,
     engagementRate: engagementStr,

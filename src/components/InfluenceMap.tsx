@@ -13,20 +13,21 @@ interface CityHeat {
 }
 
 const CITY_DATA: CityHeat[] = [
-  { name: "杭州", x: 195, y: 135, dyHeat: 98, xhsHeat: 85, topCategory: "电商直播 / 服饰", count: "142K+" },
-  { name: "上海", x: 215, y: 120, dyHeat: 82, xhsHeat: 99, topCategory: "时尚穿搭 / 奢侈品", count: "128K+" },
-  { name: "北京", x: 165, y: 55, dyHeat: 91, xhsHeat: 78, topCategory: "知识科普 / 搞笑", count: "105K+" },
-  { name: "成都", x: 80, y: 140, dyHeat: 88, xhsHeat: 80, topCategory: "生活美食 / 探店", count: "98K+" },
-  { name: "广州", x: 160, y: 195, dyHeat: 86, xhsHeat: 89, topCategory: "美妆个护 / 服装", count: "110K+" },
-  { name: "深圳", x: 155, y: 212, dyHeat: 80, xhsHeat: 84, topCategory: "数码科技 / 搞机", count: "72K+" }
+  { name: "成都", x: 80, y: 140, dyHeat: 98, xhsHeat: 91, topCategory: "川渝地道火锅 / 社区餐饮探店 / 小吃", count: "185K+" },
+  { name: "重庆", x: 92, y: 158, dyHeat: 99, xhsHeat: 93, topCategory: "九宫格老火锅 / 码头江湖菜 / 特色吃播", count: "168K+" },
+  { name: "杭州", x: 195, y: 135, dyHeat: 94, xhsHeat: 88, topCategory: "江浙精细杭帮菜 / 创意融合菜 / 下午茶", count: "145K+" },
+  { name: "上海", x: 215, y: 120, dyHeat: 85, xhsHeat: 96, topCategory: "西餐日料 / 精致Bistro / 烘焙甜品控", count: "130K+" },
+  { name: "广州", x: 160, y: 195, dyHeat: 89, xhsHeat: 84, topCategory: "广式粤菜早茶 / 潮汕牛肉火锅 / 大排档", count: "115K+" },
+  { name: "北京", x: 165, y: 55, dyHeat: 82, xhsHeat: 75, topCategory: "京城胡同融合菜 / 传统铜锅涮肉 / 烤鸭", count: "98K+" }
 ];
 
 interface InfluenceMapProps {
   currentPlatform: 'Douyin' | 'Xiaohongshu';
+  onCitySelect?: (city: string) => void;
 }
 
-export default function InfluenceMap({ currentPlatform }: InfluenceMapProps) {
-  const [selectedCity, setSelectedCity] = useState<CityHeat>(CITY_DATA[1]); // Default to Shanghai
+export default function InfluenceMap({ currentPlatform, onCitySelect }: InfluenceMapProps) {
+  const [selectedCity, setSelectedCity] = useState<CityHeat>(CITY_DATA[0]); // Default to Chengdu
 
   const getHeatValue = (city: CityHeat) => {
     return currentPlatform === 'Douyin' ? city.dyHeat : city.xhsHeat;
@@ -50,7 +51,7 @@ export default function InfluenceMap({ currentPlatform }: InfluenceMapProps) {
       </div>
 
       <p className="text-[10px] text-slate-500 leading-tight mb-3 font-mono">
-        全网达人基地定位热力分布，数据汇聚北京、杭沪时尚及成渝泛娱乐圈：
+        全网餐饮与美食探店达人活跃热度分布，重点覆盖川渝热辣老饕地（成都、重庆）及杭帮精致料理商圈：
       </p>
 
       {/* SVG Stylized China Map Grid & Hotspots */}
@@ -102,7 +103,10 @@ export default function InfluenceMap({ currentPlatform }: InfluenceMapProps) {
             return (
               <div 
                 key={city.name}
-                onClick={() => setSelectedCity(city)}
+                onClick={() => {
+                  setSelectedCity(city);
+                  onCitySelect?.(city.name);
+                }}
                 className="absolute cursor-pointer select-none group"
                 style={{ left: `${city.x}px`, top: `${city.y}px` }}
               >

@@ -45,6 +45,7 @@ export interface InfluencerProfile {
   recentTropes?: string[];
   aiScore?: number;
   interests?: InterestPreference[];
+  city?: string; // "成都" | "重庆" | "杭州" etc.
 }
 
 export interface ScriptInspiration {
