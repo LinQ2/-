@@ -2,6 +2,8 @@
 
 「达人情报局」是一款专为 MCN色机构、品牌方及自媒体运营主理人打造的智能达人决策与数据分析系统。系统结合多平台数据接口，针对抖音（Douyin）与小红书（Xiaohongshu）两大核心平台提供全方位的达人画像、行业赛道分析、AI 爆款测试以及面向微信小程序的代码级同步同步，赋能决策流。
 
+![达人情报局系统智慧大盘 UI 展示](./src/assets/images/gourmet_dashboard_mockup_1780541617710.png)
+
 ---
 
 ## 🚀 核心功能模块
@@ -34,8 +36,10 @@
 
 ### 5. 微信小程序实时开发者 IDE 工具 (Mini Program IDE & Filesystem Sync)
 *   「达人情报局」首创集成了原生**代码热编辑 IDE 控件**。
-*   **真实磁盘硬件级联动**：在页面左侧代码查看与编辑器中，直接编辑包含 `app.json`、`app.js`、`app.wxss` 以及各页面路径下（Discover, Profile, Analytics, AILab, Mine）的 `.wxml`、`.js`、`.wxss` 和 `.json` 源代码，点击 **“保存修改并同步”** 即可通过后台 Express 服务实时物理写入项目根目录下的 `/miniprogram` 文件夹。
+*   **真实磁盘硬件级联动**：在页面左侧代码查看与编辑器中，直接编辑包含 `app.json`、`app.js`、`app.wxss` 以及各页面路径下（Discover, Profile, Analytics, AILab, Mine）的 `.wxml`、`.js`、`.wxss` 和 `.json` 源代码，点击 **“保存修改并同步”** 即可通过后台 Express服务实时物理写入项目根目录下的 `/miniprogram` 文件夹。
 *   **无损转化与即开即用**：该文件夹下的所有代码 100% 严格遵循微信官方小程序标准语法。用户从该文件夹中导出代码即可直接加载在「微信开发者工具」中完美编译运行该款原汁原味的手机小程序。
+
+![微信小程序实时热编辑开发者 IDE 以及文件系统同步](./src/assets/images/miniprogram_editor_showcase_1780541635305.png)
 
 ---
 
